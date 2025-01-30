@@ -30,16 +30,16 @@ export const offers = [
     ]
   },
   {
-    type: 'train',
+    type: 'bus',
     offers: [
       {
         id: 1,
-        title: 'train offer 0',
+        title: 'bus offer 0',
         price: 1500
       },
       {
         id: 2,
-        title: 'train offer 0',
+        title: 'bus offer 0',
         price: 2000
       }
     ]

@@ -7,8 +7,6 @@ const createPointTemplate = (point, destinations, offers) => {
   const pointOffers = typeOffers.filter((typeOffer) => point.offers.includes(typeOffer.id));
   const pointDestination = destinations.find((dest) => dest.id === point.destination);
 
-  console.log(destinations);
-  console.log(offers);
   return `<li class="trip-events__item">
               <div class="event">
               <time class="event__date" datetime=${humanizeTaskDueDate(dateFrom, DATE_FORMAT.monthDay)}>${humanizeTaskDueDate(dateFrom, DATE_FORMAT.monthDay)}</time></time>

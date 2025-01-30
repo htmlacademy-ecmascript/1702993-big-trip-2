@@ -27,11 +27,8 @@ export default class BoardPresenter {
     render(this.editComponent, this.container);
     render(new CreateView(getDefaultPoint(), destinations, offers), this.editComponent.getElement());
     render(new EditView(points[2], destinations, offers), this.editComponent.getElement(), RenderPosition.BEFOREBEGIN);
-    // console.log(points.length)
-    console.log(offers)
     for (const point of points) {
       render(new PointView(point, destinations, offers), this.editComponent.getElement());
-      // console.log('создаю')
     }
   }
 }
