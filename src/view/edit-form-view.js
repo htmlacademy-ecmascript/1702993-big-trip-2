@@ -1,7 +1,8 @@
-import {createElement} from '../render.js';
+import AbstractView from '../framework/view/abstract-view';
 
 function createEditTemplate() {
-  return `<form class="event event--edit" action="#" method="post">
+  return `
+  <form class="event event--edit" action="#" method="post">
                 <header class="event__header">
                   <div class="event__type-wrapper">
                     <label class="event__type  event__type-btn" for="event-type-toggle-1">
@@ -153,23 +154,26 @@ function createEditTemplate() {
                     <p class="event__destination-description">Chamonix-Mont-Blanc (usually shortened to Chamonix) is a resort area near the junction of France, Switzerland and Italy. At the base of Mont Blanc, the highest summit in the Alps, it's renowned for its skiing.</p>
                   </section>
                 </section>
-          </form>`;
+                </form> `;
 }
-export default class EditView {
+export default class EditView extends AbstractView{
+  constructor () {
+    super();
+  }
 
-  getTemplate() {
+  get template() {
     return createEditTemplate();
   }
 
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
+  // getElement() {
+  //   if (!this.element) {
+  //     this.element = createElement(this.getTemplate());
+  //   }
 
-    return this.element;
-  }
+  //   return this.element;
+  // }
 
-  removeElement() {
-    this.element = null;
-  }
+  // removeElement() {
+  //   this.element = null;
+  // }
 }

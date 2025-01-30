@@ -1,4 +1,4 @@
-import {createElement} from '../render.js';
+import AbstractView from '../framework/view/abstract-view.js';
 import { humanizeTaskDueDate, getDuration, DATE_FORMAT } from '../util.js';
 
 const createPointTemplate = (point, destinations, offers) => {
@@ -48,26 +48,28 @@ const createPointTemplate = (point, destinations, offers) => {
               </div>
           </li>`;
 };
-export default class PointView {
+export default class PointView extends AbstractView {
+
   constructor(point, destinations, offers) {
+    super();
     this.point = point;
     this.destinations = destinations;
     this.offers = offers;
   }
 
-  getTemplate() {
+  get template() {
     return createPointTemplate(this.point, this.destinations, this.offers);
   }
+  // избавляемся от дублирующего кода
+  // getElement() {
+  //   if (!this.element) {
+  //     this.element = createElement(this.getTemplate());
+  //   }
 
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
+  //   return this.element;
+  // }
 
-    return this.element;
-  }
-
-  removeElement() {
-    this.element = null;
-  }
+  // removeElement() {
+  //   this.element = null;
+  // }
 }
