@@ -24,9 +24,10 @@ export default class BoardPresenter {
     const offers = this.#offersModel.offers;
 
     render(new SortView(), this.#container, RenderPosition.BEFOREBEGIN);
-    render(new EditView(points[2], destinations, offers), this.#container, RenderPosition.BEFOREBEGIN);
-    for (const point of points) {
-      render(new PointView(point, destinations, offers), this.#container);
+
+    for (let i = 0; i < points.length; i++) {
+      render(new PointView(points[i], destinations, offers), this.#container);
+      render(new EditView(points[i], destinations, offers), this.#container);
     }
   }
 }

@@ -60,16 +60,4 @@ export default class PointView extends AbstractView {
   get template() {
     return createPointTemplate(this.point, this.destinations, this.offers);
   }
-  // избавляемся от дублирующего кода
-  // getElement() {
-  //   if (!this.element) {
-  //     this.element = createElement(this.getTemplate());
-  //   }
-
-  //   return this.element;
-  // }
-
-  // removeElement() {
-  //   this.element = null;
-  // }
 }
