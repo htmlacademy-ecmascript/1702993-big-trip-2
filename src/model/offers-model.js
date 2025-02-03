@@ -1,21 +1,23 @@
 import { offers } from '../mocks/offers';
 
 export default class OffersModel {
+  #offers = null;
+
   constructor() {
-    this.offers = [];
+    this.#offers = [];
   }
 
   init() {
-    this.offers = offers;
+    this.#offers = offers;
   }
 
-  getOffers() {
-    return this.offers;
+  get offers() {
+    return this.#offers;
   }
 
 
   getOffersByType(type) {
-    return this.offers.filter((item) => {
+    return this.#offers.filter((item) => {
       item.type = type;
     });
   }
