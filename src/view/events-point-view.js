@@ -48,16 +48,27 @@ const createPointTemplate = (point, destinations, offers) => {
               </div>
           </li>`;
 };
-export default class PointView extends AbstractView {
 
-  constructor(point, destinations, offers) {
+export default class PointView extends AbstractView {
+  #handleClick = null;
+
+  constructor(point, destinations, offers, onClick) {
     super();
     this.point = point;
     this.destinations = destinations;
     this.offers = offers;
+    this.#handleClick = onClick;
+    this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#clickHandler);
+    window.addEventListener('keydown', this.#clickHandler);
   }
 
   get template() {
     return createPointTemplate(this.point, this.destinations, this.offers);
   }
+
+  #clickHandler = (evt) => {
+    evt.preventDefault();
+    console.log('клик');
+    // this.#handleClick();
+  };
 }
