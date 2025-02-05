@@ -159,9 +159,9 @@ function createEditTemplate() {
 export default class EditView extends AbstractView{
   #handleClick = null;
 
-  constructor (onClick) {
+  constructor (point, destinations, offers, onEditClick) {
     super();
-    this.#handleClick = onClick;
+    this.#handleClick = onEditClick;
     this.element.addEventListener('submit', this.#clickHandler);
     this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#clickHandler);
   }
@@ -172,7 +172,6 @@ export default class EditView extends AbstractView{
 
   #clickHandler = (evt) => {
     evt.preventDefault();
-    console.log('клик форма');
-    // this.#handleClick();
+    this.#handleClick();
   };
 }
