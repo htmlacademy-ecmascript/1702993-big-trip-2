@@ -3,6 +3,7 @@ import { HOURS_IN_DAY, MILLISECONDS_IN_MINUTES, SECONDS_IN_MINUTES } from './con
 
 const DATE_FORMAT = {
   monthDay: 'MMM D',
+  yearsMonth: 'YYYY-MM-DD',
   hoursMin: 'h:mm'
 };
 

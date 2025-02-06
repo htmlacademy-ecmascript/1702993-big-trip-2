@@ -1,7 +1,10 @@
 import SortView from '../view/sort-view.js';
 import EditView from '../view/edit-form-view.js';
 import PointView from '../view/events-point-view.js';
-import { render, replace, RenderPosition } from '../framework/render.js';
+import StubPointsView from '../view/stub-points-view.js';
+import EventListView from '../view/events-list-view.js';
+
+import { render, replace} from '../framework/render.js';
 
 
 export default class BoardPresenter {
@@ -9,24 +12,33 @@ export default class BoardPresenter {
   #pointsModel = null;
   #destinationsModel = null;
   #offersModel = null;
+  #boardListComponent = new EventListView();
 
   constructor({container, pointsModel, destinationsModel, offersModel}) {
     this.#container = container;
     this.#pointsModel = pointsModel;
     this.#destinationsModel = destinationsModel;
     this.#offersModel = offersModel;
-
   }
 
   init() {
+    this.#renderBoard();
+  }
+
+  #renderBoard () {
     const points = this.#pointsModel.points;
     const destinations = this.#destinationsModel.destinations;
     const offers = this.#offersModel.offers;
 
-    render(new SortView(), this.#container, RenderPosition.BEFOREBEGIN);
+    render(new SortView(), this.#container);
+    render(this.#boardListComponent, this.#container);
 
     for (let i = 0; i < points.length; i++) {
       this.#renderPoint(points[i], destinations, offers);
+    }
+
+    if (!this.#boardListComponent.element.hasChildNodes()) {
+      render(new StubPointsView(), this.#container);
     }
   }
 
@@ -59,6 +71,6 @@ export default class BoardPresenter {
       replace(pointComponent, pointEdit);
     }
 
-    render(pointComponent, this.#container);
+    render(pointComponent, this.#boardListComponent.element);
   }
 }
