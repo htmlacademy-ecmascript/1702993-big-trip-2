@@ -35,12 +35,12 @@ export const offers = [
       {
         id: 1,
         title: 'bus offer 0',
-        price: 1500
+        price: 11
       },
       {
         id: 2,
         title: 'bus offer 0',
-        price: 2000
+        price: 111
       }
     ]
   },
@@ -50,12 +50,12 @@ export const offers = [
       {
         id: 1,
         title: 'ship offer 0',
-        price: 1500
+        price: 22
       },
       {
         id: 2,
         title: 'ship offer 0',
-        price: 2000
+        price: 222
       }
     ]
   },
@@ -65,12 +65,12 @@ export const offers = [
       {
         id: 1,
         title: 'air offer 0',
-        price: 1500
+        price: 33
       },
       {
         id: 2,
         title: 'air offer 0',
-        price: 2000
+        price: 333
       }
     ]
   }
