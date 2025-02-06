@@ -19,6 +19,10 @@ export default class BoardPresenter {
   }
 
   init() {
+    this.#renderBoard();
+  }
+
+  #renderBoard () {
     const points = this.#pointsModel.points;
     const destinations = this.#destinationsModel.destinations;
     const offers = this.#offersModel.offers;
