@@ -1,6 +1,7 @@
 import SortView from '../view/sort-view.js';
 import EditView from '../view/edit-form-view.js';
 import PointView from '../view/events-point-view.js';
+import StubPointsView from '../view/stub-points-view.js';
 import { render, replace, RenderPosition } from '../framework/render.js';
 
 
@@ -27,6 +28,9 @@ export default class BoardPresenter {
     const destinations = this.#destinationsModel.destinations;
     const offers = this.#offersModel.offers;
 
+    // if (this.pointComponent.every((points) => point.isArchive)) {
+    //   render(new StubPointsView(), this.#renderBoard);
+    // }
     render(new SortView(), this.#container, RenderPosition.BEFOREBEGIN);
 
     for (let i = 0; i < points.length; i++) {
