@@ -33,12 +33,12 @@ export default class BoardPresenter {
     render(new SortView(), this.#container);
     render(this.#boardListComponent, this.#container);
 
-    for (let i = 0; i < points.length; i++) {
-      this.#renderPoint(points[i], destinations, offers);
-    }
-
-    if (!this.#boardListComponent.element.hasChildNodes()) {
+    if (points === 0) {
       render(new StubPointsView(), this.#container);
+    } else {
+      for (let i = 0; i < points.length; i++) {
+        this.#renderPoint(points[i], destinations, offers);
+      }
     }
   }
 
