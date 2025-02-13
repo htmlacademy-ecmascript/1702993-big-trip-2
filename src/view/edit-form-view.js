@@ -108,7 +108,7 @@ const createEditTemplate = (point, destinations, offers) => {
 export default class EditView extends AbstractView{
   #handleClick = null;
 
-  constructor (point, destinations, offers, onEditClick) {
+  constructor ({point, destinations, offers, onEditClick}) {
     super();
     this.point = point;
     this.destinations = destinations;

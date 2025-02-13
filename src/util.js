@@ -25,4 +25,8 @@ function getDuration (start, end) {
   }
 }
 
-export {humanizeTaskDueDate, DATE_FORMAT, getDuration};
+function updateItem(items, update) {
+  return items.map((item) => item.isFavorite === update.isFavorite ? update : item);
+}
+
+export {humanizeTaskDueDate, DATE_FORMAT, getDuration, updateItem};
