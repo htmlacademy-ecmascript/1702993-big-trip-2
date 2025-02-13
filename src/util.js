@@ -25,8 +25,8 @@ function getDuration (start, end) {
   }
 }
 
-function updateItem(items, update) {
-  return items.map((item) => item.isFavorite === update.isFavorite ? update : item);
+function updateItem(items, updatedItem) {
+  return items.map((item) => item.isFavorite === updatedItem.isFavorite ? updatedItem : item);
 }
 
 export {humanizeTaskDueDate, DATE_FORMAT, getDuration, updateItem};

@@ -17,14 +17,18 @@ export default class PointPresenter {
   #pointsContainer = null;
   #offers = null;
   #destinations = null;
+  #onClickFavoriteButton = null;
+  #onOpenEditForm = null;
   #handleDataChange = null;
   #handleModeChange = null;
   #mode = Mode.DEFAULT;
 
-  constructor({pointsContainer, destinations, offers}) {
+  constructor({pointsContainer, destinations, offers, onClickFavoriteButton, handleModeChange}) {
     this.#pointsContainer = pointsContainer;
     this.#offers = offers;
     this.#destinations = destinations;
+    this.#onClickFavoriteButton = onClickFavoriteButton;
+    this.#handleModeChange = handleModeChange;
   }
 
   init(point) {
@@ -37,7 +41,8 @@ export default class PointPresenter {
       point: this.#point,
       destinations: this.#destinations,
       offers: this.#offers,
-      onPointClick: this.#onPointClick
+      onPointClick: this.#onPointClick,
+      onClickFavoriteButton: this.#toggleFavoriteState
     });
 
     this.#editComponent = new EditView ({
@@ -52,20 +57,45 @@ export default class PointPresenter {
       return;
     }
 
-    // this.#renderPoint(this.#point, this.#destinations, this.#offers);
+    if (this.#mode === Mode.DEFAULT) {
+      replace(this.#pointComponent, prevPointComponent);
+    }
+
+    if (this.#mode === Mode.EDITING) {
+      replace(this.#pointComponent, prevEditComponent);
+      this.#mode = Mode.DEFAULT;
+    }
 
     remove(prevPointComponent);
     remove(prevEditComponent);
   }
 
+  destroy() {
+    remove(this.#pointComponent);
+    remove(this.#editComponent);
+  }
+
+  resetView() {
+    if (this.#mode !== Mode.DEFAULT) {
+      this.#replaceFormToPoint();
+    }
+  }
+
+  #toggleFavoriteState = () => {
+    this.#onClickFavoriteButton({...this.#point, isFavorite: !this.#point.isFavorite});
+  };
+
   #onPointClick = () => {
     this.#replacePointToForm();
     document.addEventListener('keydown', this.#escKeyDownHandler);
+    this.#handleModeChange();
+    this.#mode = Mode.EDITING;
   };
 
   #onEditClick = () => {
     this.#replaceFormToPoint();
     document.removeEventListener('keydown', this.#escKeyDownHandler);
+    this.#mode = Mode.DEFAULT;
   };
 
   #replacePointToForm() {
