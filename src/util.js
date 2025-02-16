@@ -29,4 +29,30 @@ function updateItem(items, updatedItem) {
   return items.map((item) => item.isFavorite === updatedItem.isFavorite ? updatedItem : item);
 }
 
-export {humanizeTaskDueDate, DATE_FORMAT, getDuration, updateItem};
+// Функция помещает задачи без даты в конце списка,
+// возвращая нужный вес для колбэка sort
+function getWeightForNullDate(dateA, dateB) {
+  if (dateA === null && dateB === null) {
+    return 0;
+  }
+  if (dateA === null) {
+    return 1;
+  }
+  if (dateB === null) {
+    return -1;
+  }
+  return null;
+}
+
+function sortByPrice(eventA, eventB) {
+  return eventA.basePrice - eventB.basePrice;
+}
+
+function sortByTime(eventA, eventB) {
+  const eventADuration = getDuration(eventA);
+  const eventBDuration = getDuration(eventB);
+
+  return eventBDuration - eventADuration;
+}
+
+export {humanizeTaskDueDate, DATE_FORMAT, getDuration, updateItem, sortByTime, sortByPrice, getWeightForNullDate};

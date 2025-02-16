@@ -29,4 +29,14 @@ export const points = [
     offers: [],
     type: 'bus'
   },
+  {
+    id: 4,
+    basePrice: 300,
+    dateFrom: '2018-05-10T22:55:56.845Z',
+    dateTo: '2018-07-11T11:22:13.375Z',
+    destination: 3,
+    isFavorite: false,
+    offers: [],
+    type: 'flight'
+  },
 ];
