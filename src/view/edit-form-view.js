@@ -27,7 +27,7 @@ const createEditTemplate = (point, destinations, offers) => {
     ` <div class="event__type-item">
                           <input id="event-${pointType}-1" class="event__type-input  visually-hidden" type="radio"
                            name="event-type" value="${pointType} ${pointType === type ? 'checked' : ''}">
-                          <label class="event__type-label  event__type-label--${pointType}" for="event-type-${pointType}-1">Taxi</label>
+                          <label class="event__type-label  event__type-label--${pointType}" for="event-type-${pointType}-1">${pointType}</label>
                         </div>`
   )).join('')}
                       </fieldset>
