@@ -60,16 +60,16 @@ export const offers = [
     ]
   },
   {
-    type: 'air',
+    type: 'flight',
     offers: [
       {
         id: 1,
-        title: 'air offer 0',
+        title: 'air offer 1',
         price: 33
       },
       {
         id: 2,
-        title: 'air offer 0',
+        title: 'air offer 2',
         price: 333
       }
     ]

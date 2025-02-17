@@ -10,8 +10,14 @@ const getDefaultPoint = () => ({
   type: POINT_TYPES[0]
 });
 
+const SortType = {
+  DATE: 'date',
+  TIME: 'time',
+  PRICE: 'price'
+};
+
 const HOURS_IN_DAY = 24;
 const MILLISECONDS_IN_MINUTES = 1000;
 const SECONDS_IN_MINUTES = 60;
 
-export {POINT_TYPES, getDefaultPoint, HOURS_IN_DAY, MILLISECONDS_IN_MINUTES, SECONDS_IN_MINUTES};
+export {POINT_TYPES, getDefaultPoint, HOURS_IN_DAY, MILLISECONDS_IN_MINUTES, SECONDS_IN_MINUTES, SortType};
