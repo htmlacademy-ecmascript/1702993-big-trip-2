@@ -2,7 +2,7 @@ export const destinations = [
   {
     id: 1,
     description: 'Chamonix, is a beautiful city, a true asian pearl, with crowded streets.',
-    name: 'Chamonis',
+    name: 'Chamonix',
     pictures: []
   },
   {

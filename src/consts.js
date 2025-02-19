@@ -1,4 +1,4 @@
-const POINT_TYPES = ['taxi', 'bus', 'train', 'ship', 'drive', 'air', 'check-in', 'slightseeing', 'restaurant'];
+const POINT_TYPES = ['taxi', 'bus', 'train', 'ship', 'drive', 'flight', 'check-in', 'slightseeing', 'restaurant'];
 
 const getDefaultPoint = () => ({
   basePrice: 0,
