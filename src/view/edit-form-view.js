@@ -1,5 +1,5 @@
 import { POINT_TYPES } from '../consts';
-import AbstractView from '../framework/view/abstract-view';
+import AbstractStatefulView from '../framework/view/abstract-stateful-view.js';
 import { humanizeTaskDueDate, DATE_FORMAT } from '../util.js';
 const formateOfferTittle = (title) => title.split(' ').join('_');
 
@@ -27,7 +27,7 @@ const createEditTemplate = (point, destinations, offers) => {
     ` <div class="event__type-item">
                           <input id="event-${pointType}-1" class="event__type-input  visually-hidden" type="radio"
                            name="event-type" value="${pointType} ${pointType === type ? 'checked' : ''}">
-                          <label class="event__type-label  event__type-label--${pointType}" for="event-type-${pointType}-1">${pointType}</label>
+                          <label class="event__type-label event__type-label--${pointType}" for="event-type-${pointType}-1" data-point-type="${pointType}">${pointType}</label>
                         </div>`
   )).join('')}
                       </fieldset>
@@ -105,7 +105,7 @@ const createEditTemplate = (point, destinations, offers) => {
                 </section>
                 </form>`;
 };
-export default class EditView extends AbstractView{
+export default class EditView extends AbstractStatefulView {
   #handleClick = null;
 
   constructor ({point, destinations, offers, onEditClick}) {
@@ -114,16 +114,51 @@ export default class EditView extends AbstractView{
     this.destinations = destinations;
     this.offers = offers;
     this.#handleClick = onEditClick;
-    this.element.addEventListener('submit', this.#clickHandler);
-    this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#clickHandler);
+    this._setState(EditView.parsePointToState(this.point));
+    this._restoreHandlers();
   }
 
   get template() {
-    return createEditTemplate(this.point, this.destinations, this.offers);
+    return createEditTemplate(this._state, this.destinations, this.offers);
   }
+
 
   #clickHandler = (evt) => {
     evt.preventDefault();
     this.#handleClick();
   };
+
+  _restoreHandlers = () => {
+    this.element.addEventListener('submit', this.#clickHandler);
+    this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#clickHandler);
+    this.element.querySelector('.event__type-group').addEventListener('click', this.#choseGroupHandler);
+    this.element.querySelector('.event__input').addEventListener('input', this.#choseDestinationHandler);
+  };
+
+  #choseDestinationHandler = (evt) => {
+    const selectedDesnination = this.destinations.find((pointDestination) => pointDestination.name === evt.target.value);
+    const selectedDestinationId = (selectedDesnination) ? selectedDesnination.id : null;
+    if (selectedDesnination) {
+      this.updateElement(this._state.destination = selectedDestinationId);
+    }
+  };
+
+  #choseGroupHandler = (evt) => {
+    if (evt.target.tagName !== 'LABEL') {
+      return;
+    }
+
+    this.updateElement({
+      type: evt.target.dataset.pointType,
+      offers: []
+    });
+  };
+
+  static parsePointToState(point) {
+    return {...point};
+  }
+
+  static parseStateToPoint (state) {
+    return {...state};
+  }
 }

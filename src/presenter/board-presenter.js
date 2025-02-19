@@ -53,7 +53,6 @@ export default class BoardPresenter {
         this.#pointPresenter.set(this.#points[i].id, pointsPresenter);
         pointsPresenter.init(this.#points[i]);
       }
-      // this.#renderSort();
     }
   };
 
@@ -85,14 +84,6 @@ export default class BoardPresenter {
     }
     this.#currentSortType = sortType;
   };
-
-  // #renderSort() {
-  //   this.#sortComponent = new SortView ({
-  //     onSortTypeChange: this.#handleSortTypeChange
-  //   });
-
-  //   // render(this.#sortComponent, this.#container, RenderPosition.AFTERBEGIN);
-  // }
 
   #handleEventsChange = (updatedEvent) => {
     this.#points = updateItem(this.#points, updatedEvent);

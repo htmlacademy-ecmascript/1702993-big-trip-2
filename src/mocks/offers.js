@@ -45,17 +45,47 @@ export const offers = [
     ]
   },
   {
-    type: 'ship',
+    type: 'train',
     offers: [
       {
         id: 1,
-        title: 'ship offer 0',
+        title: 'train offer 0',
         price: 22
       },
       {
         id: 2,
-        title: 'ship offer 0',
+        title: 'train offer 0',
         price: 222
+      }
+    ]
+  },
+  {
+    type: 'ship',
+    offers: [
+      {
+        id: 1,
+        title: 'sheep offer 1',
+        price: 33
+      },
+      {
+        id: 2,
+        title: 'sheep offer 2',
+        price: 333
+      }
+    ]
+  },
+  {
+    type: 'drive',
+    offers: [
+      {
+        id: 1,
+        title: 'drive offer 1',
+        price: 33
+      },
+      {
+        id: 2,
+        title: 'drive offer 2',
+        price: 333
       }
     ]
   },
@@ -64,12 +94,57 @@ export const offers = [
     offers: [
       {
         id: 1,
-        title: 'air offer 1',
+        title: 'flight offer 1',
         price: 33
       },
       {
         id: 2,
-        title: 'air offer 2',
+        title: 'flight offer 2',
+        price: 333
+      }
+    ]
+  },
+  {
+    type: 'check-in',
+    offers: [
+      {
+        id: 1,
+        title: 'check-in offer 1',
+        price: 33
+      },
+      {
+        id: 2,
+        title: 'check-in offer 2',
+        price: 333
+      }
+    ]
+  },
+  {
+    type: 'slightseeing',
+    offers: [
+      {
+        id: 1,
+        title: 'slightseeing offer 1',
+        price: 33
+      },
+      {
+        id: 2,
+        title: 'slightseeing offer 2',
+        price: 333
+      }
+    ]
+  },
+  {
+    type: 'restaurant',
+    offers: [
+      {
+        id: 1,
+        title: 'restaurant offer 1',
+        price: 33
+      },
+      {
+        id: 2,
+        title: 'restaurant offer 2',
         price: 333
       }
     ]
